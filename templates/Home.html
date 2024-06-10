@@ -1,0 +1,162 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>titanic survived prediction</title>
+
+    
+    <!--Bootsrap 4 CDN-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <!--Fontawesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+  <div class="container">
+        <!--fron navbar-->
+    <div class="navwrapper">
+            <ul class="navigation">
+              <li class="nav-item">
+                <a class="nl" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nl" href="https://nurastars.figcube.com/company/">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nl" href="https://nurastars.figcube.com/">Webside</a>
+              </li>
+              <li class="nav-item">
+                <a class="nl" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nl" href="https://nurastars.figcube.com/myproject/">My Project</a>
+              </li>
+            </ul>
+    </div>
+          <!--end bar hedar-->
+    <div class="moreLearn">
+            <p class="moreL">
+              Love deployment of machine learning modeling?
+              <a href="#" class="info">Check out this new course! </a>
+            </p>
+    </div> 
+
+    <div class="d-flex justify-content-center">
+      <div class="card">
+        <div class=" card-header">
+              <h3>Insert Data About Passenger</h3>
+              <div class="d-flex justify-content-end social_icon">
+                <span><a class="fab fa-facebook-square" href="https://www.facebook.com/nura.uji.75/"></a></span>
+                <span><a class="fab fa-twitter-square" href="https://x.com/mujib_sukri"></a></span>
+                <span><a class="fab fa-instagram" href="https://www.instagram.com/mujib_sukri_/"></a></span>
+              </div>
+        </div>
+          <!--form contain-->
+        <div class="card-body">
+              <form action="{{ url_for('predict')}}"method="post">
+
+                <!--ticket class-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Pclass" placeholder="Ticket class" required="required" />
+                </div>
+
+                <!--Age-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-font"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Age" placeholder="Age of Passenger" required="required" />
+                </div>
+
+                <!--Fare of ticket-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-money-bill-wave-alt"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Fare" placeholder="Fare or Price of ticket" required="required" />
+                </div>
+                
+                <!--Embarked-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-map-marked"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Embarked" placeholder="Port of Embarkation" required="required" />
+                </div>
+
+                <!--Fmembers-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-people-carry"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Fmembers" placeholder="Number of family members, exp(choose 1 or 0)" required="required" />
+                </div>
+
+                <!--sex-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-venus-mars"></i>
+                    </span>
+                  </div>
+                  <input class="form-control" type="text" name="Sex_male" placeholder="Male or not, exp(choose 1 for male, 0 for not)" required="required" />
+                </div>
+
+                   <!--btn for prediction-->
+                   <div class="form-group">
+                    <button
+                      type="submit"
+                      value="Prediction"
+                      class="btn-block btn-large predict_btn"
+                    >Prediction</button>/>
+                   </div>
+              </form>
+        </div>
+
+        <!--result-->
+        <div class="form-group Result">
+          <h1 class="TextRes">{{ prediction_text }}</h1>
+        </div>          
+      </div>
+
+      
+    </div>    
+  </div>
+
+</body>
+</html>
